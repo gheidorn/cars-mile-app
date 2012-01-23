@@ -1,0 +1,257 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="js/jquery.ui.map.full.min.js"></script>
+	<script type="text/javascript" src="js/geo.js"></script>
+
+	<style>
+		body { background-color: #000;}
+		.ui-mobile a img { padding: 20px; }
+
+		.footer { min-height: 100px;}
+	</style>
+</head> 
+<body class="ui-mobile-viewport"> 
+
+<!-- #map page -->
+<div data-role="page" id="map" data-theme="c">
+	<div data-role="header">
+		<h1>MILE App - Map View</h1>
+		<a href="index.html" class="ui-btn-left" data-icon="home" data-theme="a">Home</a>
+		<a href="index.html" class="ui-btn-right" data-icon="gear" data-theme="a">Options</a>
+	</div><!-- /header -->
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#map" class="ui-btn-active" data>Map</a></li>
+			<li><a href="#alerts">Alerts</a></li>
+			<li><a href="#directory">Directory</a></li>
+		</ul>
+	</div><!-- /navbar -->
+	<div data-role="content" class="ui-grid-a">	
+
+			<div class="ui-block-a">
+				
+				<div class="ui-grid-b" data-role="collapsible" data-collapsed="false">
+					<h3>Bill Jacobs Chevy of Plainfield</h3>
+					<div class="ui-block-a" style="width: 20%;"><img src="img/chevy-billjacobs-plainfield.jpg" /></div>
+					<div class="ui-block-b" style="width: 60%;">
+						<p>
+							16140 S Lincoln Hwy, Plainfield, IL<br />
+							(888) 634-7649<br />
+							<a href="http://www.billjacobsplainfield.com/">http://www.billjacobsplainfield.com</a><br />
+						</p>
+					</div>
+					<div class="ui-block-c" style="width: 20%;">
+						<a href="#" data-role="button" data-icon="check" data-iconpos="notext" data-inline="true">Check In</a>
+						<a href="#" data-role="button" data-icon="gear" data-iconpos="notext" data-inline="true">Notes</a>
+						<a href="#" data-role="button" data-icon="minus" data-iconpos="notext" data-inline="true">Invalid</a>
+					</div>
+				</div>
+				<div class="ui-grid-c" data-role="collapsible">
+					<h3>Crystal Lake Chevrolet</h3>
+					<div class="ui-block-a"><img src="img/chevy-crystallake.gif" /></div>
+					<div class="ui-block-b"><h4>Crystal Lake Chevrolet</h3></div>
+					<div class="ui-block-c"><p>Broken Bells</p></div>
+					<div class="ui-block-d"><a href="#" data-role="button" data-inline="true">Check In</a></div>
+				</div>
+				<div class="ui-grid-c" data-role="collapsible">
+					<h3>Haggerty Chevrolet in Glen Ellyn</h3>
+					<div class="ui-block-a"><img src="img/chevy-haggerty-glenellyn.gif" /></div>
+					<div class="ui-block-b"><h4>Haggerty Chevrolet in Glen Ellyn</h3></div>
+					<div class="ui-block-c"><p>Broken Bells</p></div>
+					<div class="ui-block-d"><a href="#" data-role="button" data-inline="true">Check In</a></div>
+				</div>
+				<div class="ui-grid-c" data-role="collapsible">
+					<h3>Hawk Chevy of Bridgeview</h3>
+					<div class="ui-block-a"><img src="img/chevy-hawk-bridgeview.gif" /></div>
+					<div class="ui-block-b"><h4>Bill Jacobs Chevy of Plainfield</h3></div>
+					<div class="ui-block-c"><p>Broken Bells</p></div>
+					<div class="ui-block-d"><a href="#" data-role="button" data-inline="true">Check In</a></div>
+				</div>
+			</div>
+			<div class="ui-block-b" style="min-height:200px">
+				<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+					<div id="map_canvas" style="height:400px;"></div>
+				</div>
+			</div>
+	</div><!-- /content -->
+	<div class="footer" data-role="footer">
+		
+		Powered by Cars.com
+	</div>
+</div><!-- /page -->
+
+<!-- #alerts page -->
+<div data-role="page" id="alerts" data-theme="c">
+
+	<div data-role="header">
+		<h1>Mile App - Alerts</h1>
+		<a href="#" class="ui-btn-left" data-icon="home" data-theme="a">Home</a>
+		<a href="#" class="ui-btn-right" data-icon="gear" data-theme="a">Options</a>
+	</div><!-- /header -->
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#map" data>Map</a></li>
+			<li><a href="#alerts" class="ui-btn-active">Alerts</a></li>
+			<li><a href="#directory">Directory</a></li>
+		</ul>
+	</div><!-- /navbar -->
+	<div data-role="content" class="ui-grid-a">
+		<div class="content-primary">
+				<ul data-role="listview">
+					<li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>
+					<li><a href="index.html">
+
+							<h3>Stephen Weber</h3>
+							<p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+							<p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+							<p class="ui-li-aside"><strong>6:24</strong>PM</p>
+
+					</a></li>
+					<li><a href="index.html">
+
+						<h3>jQuery Team</h3>
+						<p><strong>Boston Conference Planning</strong></p>
+						<p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+						<p class="ui-li-aside"><strong>9:18</strong>AM</p>
+
+					</a></li>
+					<li data-role="list-divider">Thursday, October 7, 2010 <span class="ui-li-count">1</span></li>
+					<li><a href="index.html">
+						<h3>Avery Walker</h3>
+						<p><strong>Re: Dinner Tonight</strong></p>
+						<p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait! </p>
+						<p class="ui-li-aside"><strong>4:48</strong>PM</p>
+					</a></li>
+					<li data-role="list-divider">Wednesday, October 6, 2010 <span class="ui-li-count">3</span></li>
+					<li><a href="index.html">
+						<h3>Amazon.com</h3>
+						<p><strong>4-for-3 Books for Kids</strong></p>
+						<p>As someone who has purchased children's books from our 4-for-3 Store, you may be interested in these featured books.</p>
+						<p class="ui-li-aside"><strong>12:47</strong>PM</p>
+					</a></li>
+					<li><a href="index.html">
+						<h3>Mike Taylor</h3>
+						<p><strong>Re: This weekend in Maine</strong></p>
+						<p>Hey little buddy, sorry but I can't make it up to vacationland this weekend. Maybe next weekend?</p>
+						<p class="ui-li-aside"><strong>6:24</strong>AM</p>
+					</a></li>
+					<li><a href="index.html">
+						<h3>Redfin</h3>
+						<p><strong>Redfin listing updates for today</strong></p>
+						<p>There are 3 updates for the home on your watchlist: 1 updated MLS listing and 2 homes under contract.</p>
+						<p class="ui-li-aside"><strong>5:52</strong>AM</p>
+					</a></li>
+						<li data-role="list-divider">Tuesday, October 5, 2010 <span class="ui-li-count">3</span></li>
+						<li><a href="index.html">
+							<h3>Angela Smith</h3>
+							<p><strong>Link Request</strong></p>
+							<p>My name is Angela Smith, SEO Consultant. I've greatly enjoyed looking through your site and I was wondering if you'd be interested in providing a link</p>
+							<p class="ui-li-aside"><strong>6:24</strong>AM</p>
+						</a></li>
+						<li><a href="index.html">
+							<h3>Mike Taylor</h3>
+							<p><strong>This weekend in Maine</strong></p>
+							<p>Sounds good, let me check into our plans.</p>
+							<p class="ui-li-aside"><strong>6:24</strong>AM</p>
+						</a></li>
+				</ul>
+				</div><!--/content-primary -->
+	</div><!-- /content -->
+	<div class="footer" data-role="footer">
+		
+		Powered by Cars.com
+	</div>
+</div><!-- /page -->
+
+<!-- #directory page -->
+<div data-role="page" id="directory" data-theme="c">
+	<div data-role="header">
+		<h1>MILE App - Map View</h1>
+		<a href="index.html" class="ui-btn-left" data-icon="home" data-theme="a">Home</a>
+		<a href="index.html" class="ui-btn-right" data-icon="gear" data-theme="a">Options</a>
+	</div><!-- /header -->
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#map">Map</a></li>
+			<li><a href="#alerts">Alerts</a></li>
+			<li><a href="#directory" class="ui-btn-active">Directory</a></li>
+		</ul>
+	</div><!-- /navbar -->
+	<div data-role="content" class="ui-grid-a">	
+		<div class="content-primary">	
+					<ul data-role="listview" data-filter="true" data-filter-placeholder="Search people..." data-filter-theme="b">
+						<li data-role="list-divider">A</li>
+						<li><a href="index.html">Adam Kinkaid</a></li>
+						<li><a href="index.html">Alex Wickerham</a></li>
+						<li><a href="index.html">Avery Johnson</a></li>
+						<li data-role="list-divider">B</li>
+						<li><a href="index.html">Bob Cabot</a></li>
+						<li data-role="list-divider">C</li>
+						<li><a href="index.html">Caleb Booth</a></li>
+						<li><a href="index.html">Christopher Adams</a></li>
+						<li><a href="index.html">Culver James</a></li>
+						<li data-role="list-divider">D</li>
+						<li><a href="index.html">David Walsh</a></li>
+						<li><a href="index.html">Drake Alfred</a></li>
+						<li data-role="list-divider">E</li>
+						<li><a href="index.html">Elizabeth Bacon</a></li>
+						<li><a href="index.html">Emery Parker</a></li>
+						<li><a href="index.html">Enid Voldon</a></li>
+						<li data-role="list-divider">F</li>
+						<li><a href="index.html">Francis Wall</a></li>
+						<li data-role="list-divider">G</li>
+						<li><a href="index.html">Graham Smith</a></li>
+						<li><a href="index.html">Greta Peete</a></li>
+						<li data-role="list-divider">H</li>
+						<li><a href="index.html">Harvey Walls</a></li>
+						<li data-role="list-divider">M</li>
+						<li><a href="index.html">Mike Farnsworth</a></li>
+						<li><a href="index.html">Murray Vanderbuilt</a></li>
+						<li data-role="list-divider">N</li>
+						<li><a href="index.html">Nathan Williams</a></li>
+						<li data-role="list-divider">P</li>
+						<li><a href="index.html">Paul Baker</a></li>
+						<li><a href="index.html">Pete Mason</a></li>
+						<li data-role="list-divider">R</li>
+						<li><a href="index.html">Rod Tarker</a></li>
+						<li data-role="list-divider">S</li>
+						<li><a href="index.html">Sawyer Wakefield</a></li>
+					</ul>
+					</div><!--/content-primary -->
+	</div><!-- /content -->
+	<div class="footer" data-role="footer">
+		
+		Powered by Cars.com
+	</div>
+</div><!-- /page -->
+
+<script type="text/javascript">
+if (!navigator.geolocation) { alert('Get a better browser'); }
+$(function() {
+	var foundLocation = function(position) {
+		//alert(position.coords.latitude + ", " + position.coords.longitude);
+		var yourStartLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		$('#map_canvas').gmap({'center': yourStartLatLng, 'zoom': 5, draggable: false});
+		$('#map_canvas').gmap('addMarker', {'position': yourStartLatLng, 'bounds': true}).click(function() {
+			$('#map_canvas').gmap('openInfoWindow', {'content': "Home" }, this);
+		});
+		var yourEndLatLng = new google.maps.LatLng(position.coords.latitude + 0.005, position.coords.longitude + 0.005);
+		$('#map_canvas').gmap('addMarker', {'position': yourEndLatLng, 'bounds': true}).click(function() {
+			$('#map_canvas').gmap('openInfoWindow', {'content': "Away" }, this);
+		});
+	};	
+	var noLocation = function() {
+		alert("No location for j00!")
+	};
+	navigator.geolocation.getCurrentPosition(foundLocation, noLocation, {timeout: 10000});
+});
+</script>
+</body>
+</html>
